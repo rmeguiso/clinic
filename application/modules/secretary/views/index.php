@@ -74,7 +74,7 @@
      <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">Queue No.</th>
+          <th scope="col">No.</th>
           <th scope="col">Patient</th>
           <th scope="col">Date</th>
           <th scope="col">Remarks</th>

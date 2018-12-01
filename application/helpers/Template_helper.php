@@ -213,9 +213,9 @@ function sidebar_secretary($module,$submenu,$submenu1) {
         {
             color: #fff !important;
         }
-        .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li.menu-open>a
+        .sidebar-menu>li.active>a,.sidebar-menu>li.menu-open>a, .active>a
         {
-            background-color: #1baa7d;
+            background-color: #1baa7d !important;
         }
         .sidebar-menu>li:hover>a
         {

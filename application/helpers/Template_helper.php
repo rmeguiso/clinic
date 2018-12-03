@@ -205,7 +205,15 @@ function sidebar_secretary($module,$submenu,$submenu1) {
 
     <style type="text/css">
     @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-        .active
+    	body
+    	{
+    		font-family: 'Open Sans',serif !important;
+    	}
+    	.content-wrapper
+    	{
+    		letter-spacing: 0.5px;
+    	}
+        .sidebar-menu .active
         {
             color: white !important;
         }

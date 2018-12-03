@@ -60,7 +60,7 @@
 
   <div class="row">
     <div class="col-lg-8">
-      <div class="box box-default color-palette-box">
+      <div class="box box-solid color-palette-box">
 
         <div class="box-header with-border">
           <h3 class="box-title">Queue</h3>
@@ -125,7 +125,7 @@
       </div>
     </div>
     <div class="col-lg-4">
-      <div class="box box-danger">
+      <div class="box box-solid">
         <div class="box-header with-border">
           <h3 class="box-title">Latest Patients</h3>
         </div>

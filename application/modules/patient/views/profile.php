@@ -26,7 +26,6 @@
 								<h5 class="card-title"><?php echo $patient['FName'] . ' ' . $patient['LName'] ?></h5>
 							</div>
 							<ul class="list-group list-group-flush">
-								<li class="list-group-item"><h6 style="font-family: sans-serif;font-weight: 600"><i class="fa fa-user"></i> Profile</h6></li>
 								<li class="list-group-item"><i class="fa fa-heartbeat"></i> Physical Profile</li>
 								<li class="list-group-item"><i class="fa fa-history"></i> History</li>
 							</ul>
@@ -38,7 +37,7 @@
 				<div class="col-lg-10 col-sm-6">
 					<div class="card">
 						
-						<div class="card-body">
+						<div class="card-body" id="profile_body">
 							
 						</div>
 					</div>
@@ -56,6 +55,12 @@
 </html>
 <script type="text/javascript">
 	$('document').ready(function(){
+		$.get( baseUrl + 'patient/physical_profile/' + <?php echo $patient['ID']; ?>)
+    .done(function( data ) {
+      
+      $("#profile_body").html(data);
+    });
+
 		$(".list-group-item").hover(function() {
 			$(this).css('cursor','pointer');
 			$(this).css('background-color','#f4f4f4');
@@ -63,5 +68,7 @@
 		{
 			$(this).css('background-color','#ffffff');
 		});
+
+		
 	});
 </script>

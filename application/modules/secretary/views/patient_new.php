@@ -118,7 +118,7 @@
 
 
  </div>
-
+<span id="message" class="h2">Success! New Patient has been added.</span>
 </section>
 
 
@@ -129,6 +129,7 @@
 
 
   $('document').ready(function(){
+    $('#message').hide();
     $('#save_button_new_patient').on('click', function() {
      event.preventDefault();
 
@@ -153,7 +154,20 @@
         'civil_status':civil_status
       },
       complete : function( data) {
-        alert("success");
+       $("input#first_name").val('');
+       $("input#last_name").val('');
+       $("input#birthday").val('');
+       $("input#address").val('');
+       $('input[name=gender_radio]:checked').prop('checked', false);
+       $('input[name=civil_radio]:checked').prop('checked', false);
+       $('.success').fadeIn(100).show();
+       
+       $('#message').fadeIn(function() {
+        window.setTimeout(function() {
+          $('#message').fadeOut('slow');
+        }, 2000);
+      });
+
       }
     });
    });

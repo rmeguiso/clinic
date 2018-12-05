@@ -43,6 +43,20 @@ class Patient extends CI_Controller
 
 			$this->load->view('patient/physical_profile',$data);
 		}
-		
+	}
+
+	public function history($patient_id = 0)
+	{
+		if($patient_id < 1)
+		{
+			//echo "You are not allowed here. :)";
+			echo "History goes here. :)";
+		}
+		else
+		{
+			$data['history'] = $this->MProfile->retrieve_history($patient_id);
+
+			$this->load->view('patient/history',$data);
+		}
 	}
 }

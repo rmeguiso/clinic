@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+<?php if (empty($physical_profiles)) 
+{
+   echo "No physical records found.";
+   exit;
+ }
+ ?>
+ <div class="card">
+<div class="card-body">
   <div class="container">
-    <div class="row">
+<div class="row">
 
       <table class="table">
        <thead>
@@ -19,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        
+
        <?php foreach ($physical_profiles as $physical_profile): ?>
         <tr>
          <th scope="row"><?php echo $physical_profile['ID'];?></th>
@@ -32,10 +34,10 @@
      <?php endforeach ?>
 
 
-     
+
    </tbody>
  </table>
 </div>
 </div>
-</body>
-</html>
+</div>
+</div>

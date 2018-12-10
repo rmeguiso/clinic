@@ -10,6 +10,25 @@ class Database extends CI_Model  {
 		$this->db->insert($table_name, $data);
 	}
 
+	public function delete_queue($queue_no)
+	{
+		$this->db->delete('tblschedule', array('Queue_no' => $queue_no));
+	}
+
+	public function total_number($table_name)
+	{
+		return $this->db->count_all($table_name);
+	}
+
+	public function last_ten($table_name)
+	{
+		
+		$this->db->order_by("ID", "desc");
+		$this->db->limit(10);
+		$query = $this->db->get($table_name);
+
+		return $query->result_array();
+	}
 
 	public function retrieve_all($table_name)
 	{

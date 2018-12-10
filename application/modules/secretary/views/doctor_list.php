@@ -14,7 +14,7 @@
 <section class="content">
 
 
-  <div class="box box-default color-palette-box">
+  <div class="box box-solid color-palette-box">
 
     <div class="box-header with-border">
       <h3 class="box-title"><i class="fa fa-users"></i> All Doctors</h3>
@@ -38,14 +38,12 @@
 
     <div class="box-body">
 
-     <table class="table table-bordered table-hover">
+     <table class="table">
       <thead>
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Doctor</th>
           <th scope="col">Specialization</th>
-          
-          
         </tr>
       </thead>
 

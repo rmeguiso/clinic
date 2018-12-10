@@ -14,7 +14,7 @@
 <section class="content">
 
 
-  <div class="box box-default color-palette-box">
+  <div class="box box-solid color-palette-box">
 
     <div class="box-header with-border">
       <h3 class="box-title"><i class="fa fa-user"></i> New Doctor</h3>

@@ -14,7 +14,7 @@
 <section class="content">
 
 
-  <div class="box box-default color-palette-box">
+  <div class="box box-solid color-palette-box">
 
     <div class="box-header with-border">
       <h3 class="box-title"><i class="fa fa-user"></i> New Patient</h3>
@@ -48,7 +48,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
               </div>
-              <input type="text" class="form-control pull-right" id="birthday">
+              <input type="text" class="form-control pull-right" id="birthday" placeholder="mm/dd/yyyy">
             </div>
 
           </div>
@@ -116,9 +116,9 @@
 
    </form>
 
+<span id="message" class="h2">Success! New Patient has been added.</span>
 
  </div>
-<span id="message" class="h2">Success! New Patient has been added.</span>
 </section>
 
 

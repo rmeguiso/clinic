@@ -376,11 +376,6 @@ function sidebar_secretary($module,$submenu,$submenu1) {
 
 
                 <ul class="treeview-menu">
-                    <li class="<?php echo ($submenu == 'addmedicine') ? 'active' : ''; ?>">
-                        <a href="#secretary/medicine_new"  class="links anchor-side-small">
-                            <i class="fa fa-plus-circle"></i> Add Medicine
-                        </a>
-                    </li>
                     <li class="<?php echo ($submenu == 'medicinelist') ? 'active' : ''; ?>">
                         <a href="#secretary/medicine_list"  class="links anchor-side-small">
                             <i class="fa fa-medkit"></i> Medicine List

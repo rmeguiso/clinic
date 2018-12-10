@@ -18,11 +18,14 @@ class Secretary extends CI_Controller
 		
 	}
 
-	
+
 	public function index()
 	{
 		
 		$data['patients'] = $this->MSchedule->retrieve_patient_schedule();
+		$data['total_patients'] = $this->MDatabase->total_number('tblpatient');
+		$data['total_doctors'] = $this->MDatabase->total_number('tbldoctor');
+		$data['latest_patients'] = $this->MDatabase->last_ten('tblpatient');
 
 		$this->load->view('secretary/index', $data);
 	}
@@ -31,7 +34,9 @@ class Secretary extends CI_Controller
 	{
 		
 		$data['patients'] = $this->MSchedule->retrieve_patient_schedule();
-
+		$data['total_patients'] = $this->MDatabase->total_number('tblpatient');
+		$data['total_doctors'] = $this->MDatabase->total_number('tbldoctor');
+		$data['latest_patients'] = $this->MDatabase->last_ten('tblpatient');
 		$this->load->view('secretary/dashboard', $data);
 	}
 
@@ -143,6 +148,11 @@ class Secretary extends CI_Controller
 		);
 
 		$this->MDatabase->insert('tblschedule',$data);
+	}
+
+	public function delete_queue($queue_no)
+	{
+		$this->MDatabase->delete_queue($queue_no);
 	}
 
 	public function doctor_new()

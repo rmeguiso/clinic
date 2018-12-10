@@ -19,7 +19,7 @@
     <div class="col-lg">
       <div class="box box-solid text-center">
         <div class="box-body">
-          <h4>$365.76</h4>
+          <h4>₱124,365.76</h4>
           <p>Gross Revenue</p>
         </div>
       </div>
@@ -29,7 +29,7 @@
       <div class="box box-solid text-center">
 
         <div class="box-body">
-          <h4> 365</h4>
+          <h4> <?php echo $total_patients;?></h4>
           <p>Total Patients </p>
         </div>
       </div>
@@ -39,7 +39,7 @@
       <div class="box box-solid text-center">
 
         <div class="box-body">
-          <h4> 15</h4>
+          <h4> <?php echo $total_doctors;?></h4>
           <p>Total Doctors </p>
         </div>
       </div>
@@ -92,13 +92,13 @@
 
               <td><?php echo $patient['Date']; ?></td>
               <td><?php echo $patient['Remarks']; ?></td>
-              <td class="text-center"><button class="btn btn-danger" ><i class="fa fa-close"></i></button></td>
+              <td class="text-center"><button class="btn btn-danger delete_queue" id="<?php echo $patient['Queue_no'];?>"><i class="fa fa-close"></i></button></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
       </table>
       <div class="box-footer">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Add queue</button>
+        <button id="add_queue" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Add queue</button>
       </div>
        
     </div>
@@ -109,13 +109,16 @@
  
 
   <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modal_header">Add queue</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+        </div>
+        <div class="modal-body">
+
         </div>
 
         <div class="modal-footer">
@@ -127,6 +130,9 @@
       </div>
     </div>
   </div>
+
+
+
     </div>
     <div class="col-lg-4">
       <div class="box box-solid">
@@ -136,7 +142,7 @@
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                   <ul class="users-list clearfix">
-                    <?php foreach ($patients as $patient): ?>
+                    <?php foreach ($latest_patients as $patient): ?>
                     <li>
                       <img src="<?php echo empty($patient['Image']) ? base_url().'assets/img/no-image.png' :  $patient['Image'];?>" alt="User Image">
                       <a class="users-list-name" href="#"><?php echo $patient['FName'] . ' ' . $patient['LName'] ; ?></a>
@@ -149,9 +155,7 @@
                   <!-- /.users-list -->
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="#secretary/patient_list" class="links">View All Patients</a>
-                </div>
+                
                 <!-- /.box-footer -->
               </div>
     </div>
@@ -167,11 +171,26 @@
 <script type="text/javascript">
 $('document').ready(function(){
 
-    
+    // If there's a hash in the URL, redirect the content to requested page
+  if(window.location.hash) {
+    var url = window.location.hash.split('#'); 
+     $.get( baseUrl + url[1])
+    .done(function( data ) {
+      $('.content-wrapper').html(data);
+    });
+
+    switch(url[1])
+    {
+      case 'secretary/doctor_list': 
+      {
+
+      }
+    }
+  }
 
   //The function responsible for every clicked anchor link
   $(".links").on('click', function(e) {
-    e.preventDefault();
+    //e.preventDefault();
     var url = this.href.split('#'); 
     
     $.get( baseUrl + url[1])
@@ -191,7 +210,15 @@ $('document').ready(function(){
     
   });
 
-
+  $(".delete_queue").on('click', function() {
+   $.get( baseUrl + "secretary/delete_queue/" + this.id)
+   .done(function( data ) {
+    $.get( baseUrl + "secretary/dashboard")
+    .done(function( data ) {
+      $('.content-wrapper').html(data);
+    });
+  });
+ });
 
    $("li > .links").click(function() {
    
@@ -227,12 +254,24 @@ $('document').ready(function(){
   }); 
 
   $("#patient_button_search").on('click', function() {
-    window.location.href=baseUrl + "secretary/patient_search";
+    $.get( baseUrl + 'secretary/patient_list')
+    .done(function( data ) {
+      $('body > div.wrapper > div > section.content > div:nth-child(2) > div.col-lg-8 > div.modal.fade.bd-example-modal-sm.show > div > div > div.modal-body').html(data);
+    });
+    
   });
 
   $("#patient_button_new").on('click', function() {
-    window.location.href= baseUrl + "secretary/patient_new";
-  });  
+    $.get( baseUrl + 'secretary/patient_new')
+    .done(function( data ) {
+      $('body > div.wrapper > div > section.content > div:nth-child(2) > div.col-lg-8 > div.modal.fade.bd-example-modal-sm.show > div > div > div.modal-body').html(data);
+    });
+    
+  }); 
+
+
+  
+  
 }); 
 
 

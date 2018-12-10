@@ -15,7 +15,7 @@
 <section class="content">
 
 
-  <div class="box box-default color-palette-box">
+  <div class="box box-solid color-palette-box">
 
     <div class="box-header with-border">
       <h3 class="box-title"><i class="fa fa-users"></i> All Patients</h3>
@@ -27,7 +27,7 @@
             <input type="text" name="table_search" id="search_field" class="form-control pull-right" placeholder="Search">
 
             <div class="input-group-btn">
-              <button type="submit" class="btn btn-default" id="search_button"><i class="fa fa-search"></i></button>
+              <button type="submit" class="btn btn-info" id="search_button"><i class="fa fa-search"></i></button>
             </div>
           </form>
         </div>
@@ -38,8 +38,7 @@
 
 
     <div class="box-body" >
-
-     <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -84,6 +83,7 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+     
 
     
 
@@ -169,13 +169,8 @@
       $('.box-body').html(data);
     });
 
-
-    
-
-     
-
-
   });
+
 
  });
 

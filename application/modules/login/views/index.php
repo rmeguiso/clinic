@@ -19,7 +19,7 @@
 					<div class="card-content ">
 						<h1 class="title " style="color:black; ">Login</h1>
 						
-            <?php echo form_open('login/submit'); ?>
+            <?php echo form_open('login/login_user'); ?>
 							<div class="field ">
 								<p class="control has-icons-left has-icons-right ">
 									<input class="input " type="email " placeholder="Username" name="username" required>
@@ -33,13 +33,14 @@
 							</div>
 							<div class="field ">
 								<p class="control has-icons-left ">
+									
 									<input class="input" type="password" placeholder="Password" name="password" required>
 									<span class="icon is-small is-left ">
 										<i class="fa fa-lock "></i>
 									</span>
 								</p>
 							</div>
-							<!-- <div class="field">
+							<div class="field">
 								<div class="control">
 
 									<script src="https://verifypow.com/lib/captcha.min.js" async></script>
@@ -52,11 +53,11 @@
 									
 									>
 									<em>Loading Captcha...<br>
-									If it doesn't load, please disable Adblock!</em>
+									If it doesn't load, please disable Adblock or check your internet connection</em>
 								</div>
 
 								</div>
-							</div> -->
+							</div>
 							<div class="field ">
 								<p class="control ">
 									<button class="button is-success" type="submit" name="submit">

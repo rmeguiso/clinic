@@ -53,6 +53,7 @@
 
         function main_header() {
             ?>
+          
 
 
             <!DOCTYPE html>
@@ -132,11 +133,16 @@
                             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Profile Navigation</a>
+                                       
+                                            <a href="<?php echo base_url().'secretary/logout';?>">
+                                                <button class="btn btn-info"><i class="fa fa-sign-out"></i> Logout </button>
+                                            </a> 
+                                       
                                     </li>
-
                                 </ul>
                             </div>
+
+                           
               </nav>
           </header> 
           <?php

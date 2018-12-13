@@ -1,46 +1,80 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class Login extends CI_Controller 
 {
 
-	 public function __construct()
+	public function __construct()
 	{
 		parent::__construct();
 
 		$model_list = [
-		//'doctor/schedule' => 'MSchedule',
+			'login/database' => 'MDatabase',
 		];
 
 		$this->load->model($model_list);
-
-		
 	}
 
 
 	public function index()
 	{
-		
 		$this->load->helper('form');
-		$this->load->view('index');
 		
-		
+
+		if (empty($this->session->userdata('username'))) {
+			//redirect("login");
+			//exit;
+			$this->load->view('index');
+		}
+		else
+		{
+			redirect("secretary/index");
+			exit;
+		}
 	}
 
-	public function submit()
+	public function login_user()
 	{
+
+	// load template helpers	
 		$this->load->helper('url');
+		$this->load->helper('form');
 		
 
-		 if(!empty($_SERVER['HTTP_REFERER'])){
-				redirect($_SERVER['HTTP_REFERER']);
-			} else {
-   				// add here the default url for example dashboard url
-   				redirect('http://google.com');
-			}
-	}
 
+		$post_data = [
+	'secret' => "57824f348b7903f7b16fea5d976f258d0a494034f514", // <- Your secret key
+	'token' => $this->input->post('CRLT-captcha-token'),
+	'hashes' => 256
+];
 
+$post_context = stream_context_create([
+	'http' => [
+		'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+		'method'  => 'POST',
+		'content' => http_build_query($post_data)
+	]
+]);
 
+$url = 'https://api.crypto-loot.com/token/verify';
+$response = json_decode(file_get_contents($url, false, $post_context));
+
+if ($response && $response->success=== "true") {
+	// All good. Token verified!
+
+	// protect from xss attacks
+	$login = $this->MDatabase->login_user($this->input->post('username',TRUE), $this->input->post('password',TRUE) );
+
+	if($login)
+		redirect("secretary/");
+	else
+		redirect("login/");
+}
+else
+{
+	echo "invalid token";
+}
+}
 
 }

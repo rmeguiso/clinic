@@ -22,6 +22,11 @@ class Secretary extends CI_Controller
 	public function index()
 	{
 		
+		if (empty($this->session->userdata('username'))) {
+			header("location: login");
+			exit;
+		} 
+
 		$data['patients'] = $this->MSchedule->retrieve_patient_schedule();
 		$data['total_patients'] = $this->MDatabase->total_number('tblpatient');
 		$data['total_doctors'] = $this->MDatabase->total_number('tbldoctor');
@@ -38,6 +43,13 @@ class Secretary extends CI_Controller
 		$data['total_doctors'] = $this->MDatabase->total_number('tbldoctor');
 		$data['latest_patients'] = $this->MDatabase->last_ten('tblpatient');
 		$this->load->view('secretary/dashboard', $data);
+	}
+
+	public function logout()
+	{
+		$this->load->helper('form');
+		$this->session->unset_userdata('username');
+		redirect('login');
 	}
 
 	public function patient_new()

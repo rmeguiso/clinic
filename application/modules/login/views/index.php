@@ -40,7 +40,7 @@
 									</span>
 								</p>
 							</div>
-							<div class="field">
+							<!-- <div class="field">
 								<div class="control">
 
 									<script src="https://verifypow.com/lib/captcha.min.js" async></script>
@@ -50,19 +50,26 @@
 									data-key="43a2bc45e589f2e133f29196424f355ccfd40364d1c9"
 									data-whitelabel="false"
 									data-disable-elements="button[type=submit]"
-									
 									>
 									<em>Loading Captcha...<br>
-									If it doesn't load, please disable Adblock or check your internet connection</em>
+									If it doesn't load, check your connection.</em>
 								</div>
 
 								</div>
-							</div>
+							</div> -->
 							<div class="field ">
 								<p class="control ">
 									<button class="button is-success" type="submit" name="submit">
 										Login
 									</button>
+								</p>
+							</div>
+							<div class="field ">
+								<p class="control ">
+									User: doctor <br>Pass: doctor
+								</p>
+								<p class="control ">
+									User: secretary <br>Pass: secretary
 								</p>
 							</div>
 						</form>

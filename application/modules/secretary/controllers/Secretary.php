@@ -21,10 +21,12 @@ class Secretary extends CI_Controller
 
 	public function index()
 	{
-		
-		if (empty($this->session->userdata('username'))) {
-			header("location: login");
-			exit;
+		$this->load->helper('url');
+
+		// only allow the secretary to access this page
+		if($this->session->userdata('username') != 'secretary')
+		{
+			redirect('login');
 		} 
 
 		$data['patients'] = $this->MSchedule->retrieve_patient_schedule();

@@ -1,10 +1,4 @@
-<style type="text/css">
-  .active{
-    background-color: cadetblue;
-  }
-</style>
 <?php main_header(); ?>
-<?php sidebar('dashboard','',''); ?>
 
     <div class="content-wrapper">
         <section class="content-header">
@@ -15,10 +9,28 @@
         <!-- Main content -->
         <section class="content">
         
-        <h1><?php echo $title; ?></h1>
+        <div class="box box-solid">
+        
+        <div class="box-header with-border">
+      <h3 class="box-title"><i class="fa fa-users"></i> Patient Queue</h3>
+
+      <div class="box-tools">
+        <form id="search_form">
+          <div class="input-group input-group-sm" style="width: 250px; right: 30px;">
+
+            <input type="text" name="table_search" id="search_field" class="form-control pull-right" placeholder="Search">
+
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-info" id="search_button"><i class="fa fa-search"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
 
 
-        <table class="table table-dark">
+        <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Date</th>
@@ -33,7 +45,9 @@
     <?php foreach ($schedule as $schedule_item): ?>
     <tr>
     <td><?php echo $schedule_item['Date']; ?></td>
-    <td><?php echo $schedule_item['Patient_ID']; ?></td>
+    <td><img style="width: 50px;" class="img-circle img-bordered-sm" src="<?php echo empty($schedule_item['Image']) ? base_url().'assets/img/no-image.png' :  $schedule_item['Image'];?>" alt="user image"><strong>
+                <a id="<?php echo $schedule_item['ID']; ?>" class="patient_profile" href="#"  ><?php echo $schedule_item['FName'] . ' ' . $schedule_item['LName'] ; ?></a>
+              </strong></td>
     <td><?php echo $schedule_item['Queue_no']; ?></td>
     <td><?php echo $schedule_item['Remarks']; ?></td>
     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Checkup</button></td>    
@@ -41,10 +55,7 @@
     <?php endforeach; ?>
   </tbody>
 </table>
-
-
- 
-
+</div>
 
               <div class="modal fade" id="modal-default">
           <div class="modal-dialog">

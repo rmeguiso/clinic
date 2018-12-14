@@ -63,7 +63,7 @@
             <td>
               <img style="width: 50px;" class="img-circle img-bordered-sm" src="<?php echo empty($patient['Image']) ? base_url().'assets/img/no-image.png' :  $patient['Image'];?>" alt="user image">
               <strong>
-                <a id="<?php echo $patient['ID']; ?>" class="patient_profile" href="http://google.com"  ><?php echo $patient['FName'] . ' ' . $patient['LName'] ; ?></a>
+                <a id="<?php echo $patient['ID']; ?>" class="patient_profile" href="#"  ><?php echo $patient['FName'] . ' ' . $patient['LName'] ; ?></a>
               </strong>
 
             </td>

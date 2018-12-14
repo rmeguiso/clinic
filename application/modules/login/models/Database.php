@@ -21,7 +21,9 @@ class Database extends CI_Model
 			if(password_verify($password,$query->row()->password))
 			{
 				$this->session->set_userdata('username', $username);
-				return true;
+				
+				$data = ['success'=> true, 'username' => $username];
+				return json_encode($data);
 			}
 		}
 		else

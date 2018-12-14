@@ -33,10 +33,10 @@
         <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Patient</th>
       <th scope="col">Queue No.</th>
+      <th scope="col">Patient</th>
       <th scope="col">Remarks</th>
+      <th scope="col">Date</th>
       <th scope="col">Checkup</th>
     </tr>
   </thead>
@@ -44,12 +44,12 @@
   <tbody>
     <?php foreach ($schedule as $schedule_item): ?>
     <tr>
-    <td><?php echo $schedule_item['Date']; ?></td>
+    <td><?php echo $schedule_item['Queue_no']; ?></td>
     <td><img style="width: 50px;" class="img-circle img-bordered-sm" src="<?php echo empty($schedule_item['Image']) ? base_url().'assets/img/no-image.png' :  $schedule_item['Image'];?>" alt="user image"><strong>
                 <a id="<?php echo $schedule_item['ID']; ?>" class="patient_profile" href="#"  ><?php echo $schedule_item['FName'] . ' ' . $schedule_item['LName'] ; ?></a>
               </strong></td>
-    <td><?php echo $schedule_item['Queue_no']; ?></td>
     <td><?php echo $schedule_item['Remarks']; ?></td>
+    <td><?php echo $schedule_item['Date']; ?></td>
     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Checkup</button></td>    
     </tr>
     <?php endforeach; ?>
